@@ -27,12 +27,12 @@
         "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
       }
     },
-    "_artifactsLocationSasToken": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Auto-generated token to access _artifactsLocation"
-      }
-    }
+    //"_artifactsLocationSasToken": {
+    //  "type": "securestring",
+    //  "metadata": {
+    //    "description": "Auto-generated token to access _artifactsLocation"
+    //  }
+    //}
   },
   "variables": {
     "StorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]",

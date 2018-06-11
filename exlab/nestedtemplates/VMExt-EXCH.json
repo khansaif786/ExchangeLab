@@ -69,9 +69,9 @@
           "_artifactsLocation": {
             "value": "[parameters('_artifactsLocation')]"
           },
-          "_artifactsLocationSasToken": {
-            "value": "[parameters('_artifactsLocationSasToken')]"
-          }
+          //"_artifactsLocationSasToken": {
+          //  "value": "[parameters('_artifactsLocationSasToken')]"
+          //}
         }
       }
     },
@@ -92,7 +92,7 @@
         "typeHandlerVersion": "2.9",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "modulesUrl": "[concat(parameters('_artifactsLocation'), '/', variables('PrerequisitsArchiveFolder'), '/', variables('PrerequisitsArchiveFileName'), parameters('_artifactsLocationSasToken'))]",
+          "modulesUrl": "[concat(parameters('_artifactsLocation'), '/', variables('PrerequisitsArchiveFolder'), '/', variables('PrerequisitsArchiveFileName'))]",
           "configurationFunction": "Exchprereq.ps1\\Exchprereq",
           "Properties": {
             "DomainName": "[parameters('DomainName')]",

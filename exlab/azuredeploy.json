@@ -2,12 +2,12 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "_artifactsLocation": {
-      "type": "string"
-    },
-    "_artifactsLocationSasToken": {
-      "type": "securestring"
-    },
+    //"_artifactsLocation": {
+    //  "type": "string"
+    //},
+    //"_artifactsLocationSasToken": {
+    //  "type": "securestring"
+    //},
     "StorageAccountType": {
       "type": "string",
       "defaultValue": "Standard_LRS",
@@ -96,11 +96,11 @@
               "value": "[parameters('DomainName')]"
             },
             "_artifactsLocation": {
-              "value": "[parameters('_artifactsLocation')]"
+              "value": "[variables('_artifactsLocation')]"
             },
-            "_artifactsLocationSasToken": {
-              "value": "[parameters('_artifactsLocationSasToken')]"
-            },
+            //"_artifactsLocationSasToken": {
+            //  "value": "[parameters('_artifactsLocationSasToken')]"
+            //},
             "StorageAccountName": {
               "value": "[variables('StorageAccountName')]"
             }
@@ -132,11 +132,11 @@
               "value": "[parameters('DomainName')]"
             },
             "_artifactsLocation": {
-              "value": "[parameters('_artifactsLocation')]"
+              "value": "[variables('_artifactsLocation')]"
             },
-            "_artifactsLocationSasToken": {
-              "value": "[parameters('_artifactsLocationSasToken')]"
-            },
+            //"_artifactsLocationSasToken": {
+            //  "value": "[parameters('_artifactsLocationSasToken')]"
+            //},
             "StorageAccountName": {
               "value": "[variables('StorageAccountName')]"
             }
@@ -172,11 +172,11 @@
               "value": "[parameters('DomainName')]"
             },
             "_artifactsLocation": {
-              "value": "[parameters('_artifactsLocation')]"
+              "value": "[variables('_artifactsLocation')]"
             },
-            "_artifactsLocationSasToken": {
-              "value": "[parameters('_artifactsLocationSasToken')]"
-            }
+            //"_artifactsLocationSasToken": {
+            //  "value": "[parameters('_artifactsLocationSasToken')]"
+            //}
           }
         }
       }
