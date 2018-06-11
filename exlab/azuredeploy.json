@@ -47,7 +47,7 @@
     //"EXLAB-DC-TemplateFileName": "EXLAB-DC.json",
     //"EXLAB-EXCH-TemplateFolder": "nestedtemplates",
     //"EXLAB-EXCH-TemplateFileName": "EXLAB-EXCH.json",
-    "VMExt-EXCHTemplateFolder": "nestedtemplates",
+    // "VMExt-EXCHTemplateFolder": "nestedtemplates",
     //"VMExt-EXCHTemplateFileName": "VMExt-EXCH.json",
     "VMName": {
       "Name": [ "EXLAB-DC", "EXLAB-EXCH" ]
