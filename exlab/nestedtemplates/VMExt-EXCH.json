@@ -2,12 +2,12 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "_artifactsLocation": {
-      "type": "string",
-      "metadata": {
-        "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
-      }
-    },
+    // "_artifactsLocation": {
+    //   "type": "string",
+    //   "metadata": {
+    //     "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
+    //   }
+    // },
     // "_artifactsLocationSasToken": {
     //   "type": "securestring",
     //   "metadata": {
