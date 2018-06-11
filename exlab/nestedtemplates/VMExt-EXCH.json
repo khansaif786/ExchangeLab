@@ -8,13 +8,13 @@
         "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
       }
     },
-    "_artifactsLocationSasToken": {
-      "type": "securestring",
-      "metadata": {
-        "description": "Auto-generated token to access _artifactsLocation"
-      }
-    },
-    "AdminUserName": {
+    // "_artifactsLocationSasToken": {
+    //   "type": "securestring",
+    //   "metadata": {
+    //     "description": "Auto-generated token to access _artifactsLocation"
+    //   }
+    // },
+    // "AdminUserName": {
       "type": "string",
       "minLength": 1
     },
