@@ -35,18 +35,23 @@
 
   },
   "variables": {
+    "_artifactsLocation": "https://raw.githubusercontent.com/khansaif786/ExchangeLab/master/",
+    "Shared-ResourcesTemplateUri": "[concat(variables('_artifactsLocation'),'/nestedtemplates/Shared-Resources.json')]",
+    "EXLAB-DC-ResourcesTemplateUri": "[concat(variables('_artifactsLocation'),'/nestedtemplates/EXLAB-DC.json')]",
+    "EXLAB-EXCH-ResourcesTemplateUri": "[concat(variables('_artifactsLocation'),'/nestedtemplates/EXLAB-EXCH.json')]",
+    "EXCH-VMExt-ResourcesTemplateUri": "[concat(variables('_artifactsLocation'),'/nestedtemplates/VMExt-EXCH.json')]",
     "StorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]",
-    "Shared-ResourcesTemplateFolder": "nestedtemplates",
-    "Shared-ResourcesTemplateFileName": "Shared-Resources.json",
-    "EXLAB-DC-TemplateFolder": "nestedtemplates",
-    "EXLAB-DC-TemplateFileName": "EXLAB-DC.json",
-    "EXLAB-EXCH-TemplateFolder": "nestedtemplates",
-    "EXLAB-EXCH-TemplateFileName": "EXLAB-EXCH.json",
-    "VMExt-EXCHTemplateFolder": "nestedtemplates",
-    "VMExt-EXCHTemplateFileName": "VMExt-EXCH.json",
+    //"Shared-ResourcesTemplateFolder": "nestedtemplates",
+    //"Shared-ResourcesTemplateFileName": "Shared-Resources.json",
+    //"EXLAB-DC-TemplateFolder": "nestedtemplates",
+    //"EXLAB-DC-TemplateFileName": "EXLAB-DC.json",
+    //"EXLAB-EXCH-TemplateFolder": "nestedtemplates",
+    //"EXLAB-EXCH-TemplateFileName": "EXLAB-EXCH.json",
+    //"VMExt-EXCHTemplateFolder": "nestedtemplates",
+    //"VMExt-EXCHTemplateFileName": "VMExt-EXCH.json",
     "VMName": {
       "Name": [ "EXLAB-DC", "EXLAB-EXCH" ]
-       } 
+    }
   },
     "resources": [
       {
@@ -57,7 +62,7 @@
         "properties": {
           "mode": "Incremental",
           "templateLink": {
-            "uri": "[concat(parameters('_artifactsLocation'), '/', variables('Shared-ResourcesTemplateFolder'), '/', variables('Shared-ResourcesTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+            "uri": "[variables('Shared-ResourcesTemplateUri')]",
             "contentVersion": "1.0.0.0"
           },
           "parameters": {
@@ -77,7 +82,7 @@
           "properties": {
           "mode": "Incremental",
           "templateLink": {
-            "uri": "[concat(parameters('_artifactsLocation'), '/', variables('EXLAB-DC-TemplateFolder'), '/', variables('EXLAB-DC-TemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+            "uri": "[variables('EXLAB-DC-ResourcesTemplateUri')]",
             "contentVersion": "1.0.0.0"
           },
           "parameters": {
@@ -113,7 +118,7 @@
         "properties": {
           "mode": "Incremental",
           "templateLink": {
-            "uri": "[concat(parameters('_artifactsLocation'), '/', variables('EXLAB-EXCH-TemplateFolder'), '/', variables('EXLAB-EXCH-TemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+            "uri": "[variables('EXLAB-EXCH-ResourcesTemplateUri')]",
             "contentVersion": "1.0.0.0"
           },
           "parameters": {
@@ -150,7 +155,7 @@
         "properties": {
           "mode": "Incremental",
           "templateLink": {
-            "uri": "[concat(parameters('_artifactsLocation'), '/', variables('VMExt-EXCHTemplateFolder'), '/', variables('VMExt-EXCHTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+            "uri": "[variables('EXCH-VMExt-ResourcesTemplateUri')]",
             "contentVersion": "1.0.0.0"
           },
           "parameters": {
