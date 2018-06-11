@@ -39,6 +39,7 @@
     <Content Include="nestedtemplates\VM-ext-Domainjoin.json" />
     <Content Include="DSC\Exchprereq.ps1.zip" />
     <Content Include="nestedtemplates\VMExt-EXCH.json" />
+    <Content Include="README.md" />
   </ItemGroup>
   <Target Name="GetReferenceAssemblyPaths" />
 </Project>
