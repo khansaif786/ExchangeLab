@@ -1,0 +1,99 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "_artifactsLocation": {
+      "type": "string"
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring"
+    },
+    "StorageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_ZRS",
+        "Standard_GRS",
+        "Standard_RAGRS",
+        "Premium_LRS"
+      ]
+    },
+    "AdminUserName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "AdminPassword": {
+      "type": "securestring"
+    },
+    "DomainName": {
+      "type": "string",
+      "metadata": {
+        "description": "The FQDN of the AD Domain created "
+      }
+    }
+    },
+  "variables": {
+    "Shared-ResourcesTemplateFolder": "nestedtemplates",
+    "Shared-ResourcesTemplateFileName": "Shared-Resources.json",
+    "EX-DC-VMTemplateFolder": "nestedtemplates",
+    "EX-DC-VMTemplateFileName": "EX-DC-VM.json",
+    "StorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+      {
+        "name": "Shared-Resources",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2016-09-01",
+        "dependsOn": [],
+        "properties": {
+          "mode": "Incremental",
+          "templateLink": {
+            "uri": "[concat(parameters('_artifactsLocation'), '/', variables('Shared-ResourcesTemplateFolder'), '/', variables('Shared-ResourcesTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parameters": {
+            "StorageAccountType": {
+              "value": "[parameters('StorageAccountType')]"
+            }
+          }
+        }
+      },
+      {
+        "name": "EX-DC-VM",
+        "type": "Microsoft.Resources/deployments",
+        "apiVersion": "2016-09-01",
+        "dependsOn": [
+         "Shared-Resources"
+        ],
+        "properties": {
+          "mode": "Incremental",
+          "templateLink": {
+            "uri": "[concat(parameters('_artifactsLocation'), '/', variables('EX-DC-VMTemplateFolder'), '/', variables('EX-DC-VMTemplateFileName'), parameters('_artifactsLocationSasToken'))]",
+            "contentVersion": "1.0.0.0"
+          },
+          "parameters": {
+            "AdminUserName": {
+              "value": "[parameters('AdminUserName')]"
+            },
+            "AdminPassword": {
+              "value": "[parameters('AdminPassword')]"
+            },
+            "DomainName": {
+              "value": "[parameters('DomainName')]"
+            },
+            "_artifactsLocation": {
+              "value": "[parameters('_artifactsLocation')]"
+            },
+            "_artifactsLocationSasToken": {
+              "value": "[parameters('_artifactsLocationSasToken')]"
+            },
+            "StorageAccountName": {
+              "value": "[variables('StorageAccountName')]"
+            }
+          }
+        }
+      }
+    ],
+    "outputs": {}
+  }

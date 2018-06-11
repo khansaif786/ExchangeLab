@@ -1,0 +1,112 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "_artifactsLocation": {
+      "type": "string",
+      "metadata": {
+        "description": "Auto-generated container in staging storage account to receive post-build staging folder upload"
+      }
+    },
+    "_artifactsLocationSasToken": {
+      "type": "securestring",
+      "metadata": {
+        "description": "Auto-generated token to access _artifactsLocation"
+      }
+    },
+    "AdminUserName": {
+      "type": "string",
+      "minLength": 1
+    },
+    "AdminPassword": {
+      "type": "securestring"
+    },
+    "DomainName": {
+      "type": "string",
+      "metadata": {
+        "description": "The FQDN of the AD Domain created "
+      }
+    },
+    "VMName": {
+      "type": "string",
+      "metadata": {
+        "description": "The FQDN of the AD Domain created "
+      }
+    }
+  },
+  "variables": {
+    //"VM_DjoinTemplateUri": "[concat(parameters('_artifactsLocation'), '/nestedtemplates/', 'VM-ext-Domainjoin.json', parameters('_artifactsLocationSasToken'))]",
+    "DSCDomainJoinArchiveFolder": "dsc",
+    "DSCDomainJoinArchiveFileName": "Domainjoin.ps1.zip"
+  },
+    "resources": [
+      {
+        "name": "[concat('/', parameters('VMName'), '/Domainjoin')]",
+        "type": "Microsoft.Compute/virtualMachines/extensions",
+        "location": "[resourceGroup().location]",
+        "apiVersion": "2016-03-30",
+        "dependsOn": [],
+        "tags": {
+          "displayName": "DomainJoin"
+        },
+        "properties": {
+          "publisher": "Microsoft.Powershell",
+          "type": "DSC",
+          "typeHandlerVersion": "2.18",
+          "autoUpgradeMinorVersion": true,
+          "settings": {
+            "modulesUrl": "[concat(parameters('_artifactsLocation'), '/', variables('DSCDomainJoinArchiveFolder'), '/', variables('DSCDomainJoinArchiveFileName'), parameters('_artifactsLocationSasToken'))]",
+            "configurationFunction": "Domainjoin.ps1\\Domainjoin",
+            "Properties": {
+              "DomainName": "[parameters('DomainName')]",
+              "VMName": "[parameters('VMName')]",
+              "AdminCreds": {
+                "UserName": "[parameters('adminUsername')]",
+                "Password": "PrivateSettingsRef:AdminPassword"
+              }
+            }
+          },
+          "protectedSettings": {
+            "Items": {
+              "AdminPassword": "[parameters('adminPassword')]"
+            },
+            "configurationUrlSasToken": "[parameters('_artifactsLocationSasToken')]"
+          }
+        }
+      },
+        //{
+        //  "name": "domianJoin",
+        //  "type": "Microsoft.Resources/deployments",
+        //  "apiVersion": "2015-01-01",
+        //  "dependsOn": [],
+        //  "properties": {
+        //    "mode": "Incremental",
+        //    "templateLink": {
+        //      "uri": "[variables('VM_DjoinTemplateUri')]",
+        //      "contentVersion": "1.0.0.0"
+        //    },
+        //    "parameters": {
+        //      "VMName": {
+        //        "value": "[parameters('VMName')]"
+        //      },
+        //      "DomainName": {
+        //        "value": "[parameters('domainName')]"
+        //      },
+        //      "AdminUserName": {
+        //        "value": "[parameters('adminUsername')]"
+        //      },
+        //      "AdminPassword": {
+        //        "value": "[parameters('adminPassword')]"
+        //      },
+        //      "_artifactsLocation": {
+        //        "value": "[parameters('_artifactsLocation')]"
+        //      },
+        //      "_artifactsLocationSasToken": {
+        //        "value": "[parameters('_artifactsLocationSasToken')]"
+        //      }
+        //    }
+        //  }
+        //}
+    ],
+    "outputs": {}
+  }
