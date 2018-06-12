@@ -40,7 +40,7 @@
     "DSCExchprereqFileName": "Exchprereq.ps1.zip",
     "PrerequisitsArchiveFolder": "DSC",
     "PrerequisitsArchiveFileName": "Exchprereq.ps1.zip",
-    "VMName":  "EXLAB-EXCH"
+    "VMName": "EXLAB-EXCH"
   },
   "resources": [
     {
@@ -55,9 +55,9 @@
           "contentVersion": "1.0.0.0"
         },
         "parameters": {
-          //"VMName": {
-          //  "value": "[parameters('VMName')]"
-          //},
+          "VMName": {
+            "value": "[variables('VMName')]"
+          },
           "DomainName": {
             "value": "[parameters('domainName')]"
           },
