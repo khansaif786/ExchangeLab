@@ -77,7 +77,7 @@
         "type": "Microsoft.Resources/deployments",
         "apiVersion": "2016-09-01",
         "dependsOn": [
-          "Shared-Resources"
+          "[concat('Microsoft.Resources/deployments/', 'Shared-Resources')]"
         ],
           "properties": {
           "mode": "Incremental",
@@ -112,9 +112,9 @@
         "type": "Microsoft.Resources/deployments",
         "apiVersion": "2016-09-01",
         "dependsOn": [
-          "Shared-Resources",
-            "EXLAB-DC"
-                  ],
+          "[concat('Microsoft.Resources/deployments/', 'Shared-Resources')]",
+          "[concat('Microsoft.Resources/deployments/', 'EXLAB-DC')]"
+        ],
         "properties": {
           "mode": "Incremental",
           "templateLink": {
@@ -148,9 +148,9 @@
         "type": "Microsoft.Resources/deployments",
         "apiVersion": "2016-09-01",
         "dependsOn": [
-          "Shared-Resources",
-          "EXLAB-DC",
-          "EXLAB-EXCH"
+          "[concat('Microsoft.Resources/deployments/', 'Shared-Resources')]",
+          "[concat('Microsoft.Resources/deployments/', 'EXLAB-DC')]",
+          "[concat('Microsoft.Resources/deployments/', 'EXLAB-EXCH')]"
         ],
         "properties": {
           "mode": "Incremental",
@@ -159,9 +159,9 @@
             "contentVersion": "1.0.0.0"
           },
           "parameters": {
-            "VMName": {
-              "value": "[variables('VMName').Name[1]]"
-            },
+            //"VMName": {
+            //  "value": "[variables('VMName').Name[1]]"
+            //},
             "AdminUserName": {
               "value": "[parameters('AdminUserName')]"
             },

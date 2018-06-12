@@ -27,11 +27,11 @@
         "description": "The FQDN of the AD Domain created "
       }
     },
-    "VMName": {
-      "type": "string",
-      "metadata": {
-        "description": "The FQDN of the AD Domain created "
-      }
+    //"VMName": {
+    //  "type": "string",
+    //  "metadata": {
+    //    "description": "The FQDN of the AD Domain created "
+    //  }
     }
   },
   "variables": {
