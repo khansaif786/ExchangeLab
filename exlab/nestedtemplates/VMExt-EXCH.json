@@ -77,7 +77,7 @@
       }
     },
     {
-      "name": "[concat(parameters('VMName'), '/Exchprereq')]",
+      "name": "[concat(variables('VMName'), '/Exchprereq')]",
       "type": "Microsoft.Compute/virtualMachines/extensions",
       "location": "[resourceGroup().location]",
       "apiVersion": "2016-03-30",
