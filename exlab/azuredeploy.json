@@ -173,7 +173,7 @@
             },
             "_artifactsLocation": {
               "value": "[variables('_artifactsLocation')]"
-            },
+            }
             //"_artifactsLocationSasToken": {
             //  "value": "[parameters('_artifactsLocationSasToken')]"
             //}
