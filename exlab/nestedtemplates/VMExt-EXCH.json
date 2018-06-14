@@ -93,7 +93,7 @@
         "typeHandlerVersion": "2.76",
         "autoUpgradeMinorVersion": true,
         "settings": {
-          "wmfVersion": "latest",
+          "wmfVersion": "4.0",
           "modulesUrl": "[concat(parameters('_artifactsLocation'), '/', variables('PrerequisitsArchiveFolder'), '/', variables('PrerequisitsArchiveFileName'))]",
           "configurationFunction": "Exchprereq.ps1\\Exchprereq",
           "Properties": {
