@@ -12,21 +12,21 @@
         "Standard_RAGRS",
         "Premium_LRS"
       ]
-    },
-    "vnetAddressPrefix": {
-      "type": "string",
-      "defaultValue": "10.1.0.0/16",
-      "metadata": {
-        "description": "Address prefix"
-      }
-      },
-      "subnetPrefix": {
-        "type": "string",
-        "defaultValue": "10.1.0.0/24",
-        "metadata": {
-          "description": "Subnet Prefix"
-        }
-      }
+    }
+    //"vnetAddressPrefix": {
+    //  "type": "string",
+    //  "defaultValue": "10.1.0.0/16",
+    //  "metadata": {
+    //    "description": "Address prefix"
+    //  }
+    //  },
+    //  "subnetPrefix": {
+    //    "type": "string",
+    //    "defaultValue": "10.1.0.0/24",
+    //    "metadata": {
+    //      "description": "Subnet Prefix"
+    //    }
+    //  }
      },
       "variables": {
         "VnetPrefix": "[parameters('vnetAddressPrefix')]",
