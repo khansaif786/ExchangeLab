@@ -37,9 +37,9 @@
   "variables": {
     "StorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]",
     "VNetName": "ExVnet",
-    "VnetPrefix": "10.0.0.0/16",
+    "VnetPrefix": "10.1.0.0/16",
     "VnetSubnetName": "Subnet-1",
-    "VnetSubnetPrefix": "10.0.0.0/24",
+    "VnetSubnetPrefix": "10.1.0.0/24",
     "VMName": "EXLAB-AD",
     "NicName": "[concat(variables('VMName'), '-NIC')]",
     "InternalIP": "10.0.0.4",
