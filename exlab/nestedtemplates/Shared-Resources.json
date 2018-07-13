@@ -12,52 +12,68 @@
         "Standard_RAGRS",
         "Premium_LRS"
       ]
-    }},
-  "variables": {
-    "VnetPrefix": "10.0.0.0/16",
-    "VnetSubnet1Name": "Subnet-1",
-    "VnetSubnet1Prefix": "10.0.0.0/24",
-    "StorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]"
-  },
-    "resources": [
-    {
-      "name": "ExVnet",
-      "type": "Microsoft.Network/virtualNetworks",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2016-03-30",
-      "dependsOn": [ ],
-      "tags": {
-        "displayName": "ExVnet"
-      },
-      "properties": {
-        "addressSpace": {
-          "addressPrefixes": [
-            "[variables('VnetPrefix')]"
-          ]
-        },
-        "subnets": [
-          {
-            "name": "[variables('VnetSubnet1Name')]",
-            "properties": {
-              "addressPrefix": "[variables('VnetSubnet1Prefix')]"
-            }
-          }
-        ]
-      }
     },
-    {
-      "name": "[variables('StorageAccountName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "location": "[resourceGroup().location]",
-      "apiVersion": "2016-01-01",
-      "sku": {
-        "name": "[parameters('StorageAccountType')]"
+    "vnetAddressPrefix": {
+      "type": "string",
+      "defaultValue": "10.1.0.0/16",
+      "metadata": {
+        "description": "Address prefix"
+      }
       },
-      "dependsOn": [ ],
-      "tags": {
-        "displayName": "StorageAccount"
+      "subnetPrefix": {
+        "type": "string",
+        "defaultValue": "10.1.0.0/24",
+        "metadata": {
+          "description": "Subnet Prefix"
+        }
+      }
+     },
+      "variables": {
+        "VnetPrefix": "[parameters('vnetAddressPrefix')]",
+        "VnetSubnet1Name": "Subnet-1",
+        "VnetSubnet1Prefix": "[parameters('subnetPrefix')]",
+        "StorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]"
       },
-      "kind": "Storage"
-    }],
-  "outputs": {}
-}
+      "resources": [
+        {
+          "name": "ExVnet",
+          "type": "Microsoft.Network/virtualNetworks",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2016-03-30",
+          "dependsOn": [],
+          "tags": {
+            "displayName": "ExVnet"
+          },
+          "properties": {
+            "addressSpace": {
+              "addressPrefixes": [
+                "[variables('VnetPrefix')]"
+              ]
+            },
+            "subnets": [
+              {
+                "name": "[variables('VnetSubnet1Name')]",
+                "properties": {
+                  "addressPrefix": "[variables('VnetSubnet1Prefix')]"
+                }
+              }
+            ]
+          }
+        },
+        {
+          "name": "[variables('StorageAccountName')]",
+          "type": "Microsoft.Storage/storageAccounts",
+          "location": "[resourceGroup().location]",
+          "apiVersion": "2016-01-01",
+          "sku": {
+            "name": "[parameters('StorageAccountType')]"
+          },
+          "dependsOn": [],
+          "tags": {
+            "displayName": "StorageAccount"
+          },
+          "kind": "Storage"
+        }
+      ],
+      "outputs": {}
+    }
