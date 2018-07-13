@@ -28,12 +28,12 @@
     //    }
     //  }
      },
-      "variables": {
-        "VnetPrefix": "[parameters('vnetAddressPrefix')]",
-        "VnetSubnet1Name": "Subnet-1",
-        "VnetSubnet1Prefix": "[parameters('subnetPrefix')]",
-        "StorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]"
-      },
+  "variables": {
+    "VnetPrefix": "10.1.0.0/16",
+    "VnetSubnet1Name": "Subnet-1",
+    "VnetSubnet1Prefix": "10.1.0.0/24",
+    "StorageAccountName": "[concat('storage', uniqueString(resourceGroup().id))]"
+  },
       "resources": [
         {
           "name": "ExVnet",
