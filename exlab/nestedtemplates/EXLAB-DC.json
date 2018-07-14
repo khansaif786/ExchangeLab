@@ -42,7 +42,7 @@
     "VnetSubnetPrefix": "10.1.1.0/24",
     "VMName": "EXLAB-AD",
     "NicName": "[concat(variables('VMName'), '-NIC')]",
-    "InternalIP": "10.0.0.4",
+    "InternalIP": "10.1.1.4",
     "PublicIPName": "[concat(variables('VMName'), '-pip')]",
     "PublicIPDnsName": "[concat(toLower(resourceGroup().name), '-dcpip')]",
     //"PublicIPDnsName": "[concat(toLower(uniqueString(resourceGroup().id)), '-dcpip')]",
