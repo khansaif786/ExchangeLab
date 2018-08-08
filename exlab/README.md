@@ -1,4 +1,4 @@
-# Exchange 2013 Lab - By Saif Khan
+# Exchange 2016 Lab - By Saif Khan
 
 Azure template for Exchange 2016 lab deployment. It creates an On-prem Domain Controller with Exchange 2016.
 
