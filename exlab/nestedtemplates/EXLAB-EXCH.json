@@ -40,7 +40,7 @@
     "ExVnetPrefix": "10.1.0.0/16",
     "ExVnetSubnetName": "Subnet-1",
     "ExVnetSubnetPrefix": "10.1.1.0/24",
-    "VMName": "EXLAB-EXCH16",
+    "VMName": "EXLAB-EXCH",
     "NicName": "[concat(variables('VMName'), '-NIC')]",
     "internalIP": "10.1.1.5",
     "PublicIPName": "[concat(variables('VMName'), '-pip')]",
